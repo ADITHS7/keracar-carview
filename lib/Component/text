@@ -1,0 +1,78 @@
+Container(
+              width: 173,
+              child: Container(
+                width: 57,
+                padding: EdgeInsets.symmetric(horizontal: 6),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      child: Row(
+                        children: [
+                          SvgPicture.asset('lib/assets/location.svg'),
+                          SizedBox(width: 7),
+                          Text(
+                            'Calicut',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 8,
+                              color: Color.fromRGBO(155, 155, 155, 1),
+                              shadows: [
+                                Shadow(
+                                  color: Color.fromRGBO(0, 0, 0, 0.5),
+                                  blurRadius: 2,
+                                  offset: Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 69,
+                      height: 13.01,
+                      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                              color: Color.fromRGBO(155, 155, 155, 1))),
+                      child: Row(
+                        children: [
+                          Container(
+                            child: Text(
+                              '${_currentIndex + 1}/8',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 8,
+                                  color: Color.fromRGBO(155, 155, 155, 1)),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 3,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: dummyImages
+                                .asMap()
+                                .entries
+                                .where((entry) =>
+                                    entry.key >= _currentIndex &&
+                                    entry.key < _currentIndex + 5)
+                                .map((entry) {
+                              return Padding(
+                                padding: EdgeInsets.only(right: 3.0),
+                                child: _currentIndex == entry.key
+                                    ? SvgPicture.asset('lib/assets/Ellipse.svg')
+                                    : SvgPicture.asset(
+                                        'lib/assets/Ellipse Fill.svg'),
+                              );
+                            }).toList(),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            )
